@@ -9,7 +9,12 @@ $govuk-global-styles: true;
 @import "patterns/task-list";
 @import "patterns/related-items";
 
+// EPC components
+@import 'epc-header/epc-header';
+
 // Components that aren't in Frontend
 @import "components/cookie-banner";
+@import "components/definition-list";
+@import "components/misc";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you

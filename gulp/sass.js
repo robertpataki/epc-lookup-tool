@@ -12,9 +12,9 @@ const sourcemaps = require('gulp-sourcemaps')
 const config = require('./config.json')
 
 gulp.task('sass', function () {
-  return gulp.src(config.paths.assets + '/sass/*.scss')
+  return gulp.src([config.paths.assets + '/sass/*.scss', config.paths.views + 'components/**/.s+(a|c)ss'])
     .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+    .pipe(sass({outputStyle: 'expanded', includePaths: [config.paths.views + 'components/']}).on('error', sass.logError))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.paths.public + '/stylesheets/'))
 })
@@ -30,14 +30,15 @@ gulp.task('sass-documentation', function () {
 // Backward compatibility with Elements
 
 gulp.task('sass-v6', function () {
-  return gulp.src(config.paths.v6Assets + '/sass/*.scss')
+  return gulp.src([config.paths.v6Assets + '/sass/*.scss', config.paths.views + 'components/**/.s+(a|c)ss'])
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'expanded',
       includePaths: [
         'node_modules/govuk_frontend_toolkit/stylesheets',
         'node_modules/govuk-elements-sass/public/sass',
-        'node_modules/govuk_template_jinja/assets/stylesheets'
+        'node_modules/govuk_template_jinja/assets/stylesheets',
+        config.paths.views + 'components/'
       ]
     }).on('error', sass.logError))
     .pipe(sourcemaps.write())

@@ -1,0 +1,23 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Error
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukWarningText({
+        text: "Couldn't find any match for house number '" + houseNumber + "' in the '" + postcode + "' area."
+      }) }}
+
+      {{ govukButton({
+        text: "Try again",
+        href: "/"
+      }) }}
+    </div>
+</div>
+
+{% endblock %}

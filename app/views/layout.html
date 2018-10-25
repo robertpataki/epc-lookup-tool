@@ -24,41 +24,36 @@
 {% from "textarea/macro.njk"      import govukTextarea %}
 {% from "warning-text/macro.njk"  import govukWarningText %}
 
+{% from "components/epc-header/macro.njk" import  epcHeader %}
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
 
-{% block pageTitle %}
-  GOV.UK Prototype Kit
-{% endblock %}
-
 {% block header %}
-  {% include "includes/cookie-banner.html" %}
-  {# Set serviceName in config.js. #}
-  {{ govukHeader({
+  {{ epcHeader({
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "/",
     containerClasses: "govuk-width-container"
   }) }}
+
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        {{ govukPhaseBanner({
+          tag: {
+            text: "zeta"
+          },
+          html: 'This is a not an official government service!'
+        }) }}
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% if useAutoStoreData %}
   {% block footer %}
-    {{ govukFooter({
-      meta: {
-        items: [
-          {
-            href: "https://govuk-prototype-kit.herokuapp.com/",
-            text: "GOV.UK Prototype Kit " + releaseVersion
-          },
-          {
-            href: "/prototype-admin/clear-data",
-            text: "Clear data"
-          }
-        ]
-      }
-    }) }}
   {% endblock %}
 {% endif %}
 

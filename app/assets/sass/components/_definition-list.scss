@@ -1,0 +1,21 @@
+.definition-list {
+  dt, dd {
+    display: table-cell;
+    width: 50%;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+}
+
+.definition-list__item {
+  width: 100%;
+  display: table;
+  padding: govuk-spacing(4) 0 govuk-spacing(3);
+  border-bottom: 1px solid govuk-colour('grey-2');
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

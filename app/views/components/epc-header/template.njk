@@ -1,0 +1,36 @@
+<header class="epc-header {{ params.classes if params.classes }}" role="banner" data-module="epc-header"
+        {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <div class="epc-header__container {{ params.containerClasses | default('govuk-width-container') }}">
+    {% if params.serviceName or params.navigation  %}
+    <div class="epc-header__contents">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          {% if params.serviceName %}
+          <a href="{{ params.serviceUrl }}" class="epc-header__link epc-header__link--service-name">
+            {{ params.serviceName }}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if params.navigation %}
+      <button role="button" class="epc-header__menu-button js-epc-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+      <nav>
+        <ul id="navigation" class="epc-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
+          {% for item in params.navigation %}
+            {% if item.href and item.text %}
+              <li class="epc-header__navigation-item{{ ' epc-header__navigation-item--active' if item.active }}">
+                <a class="epc-header__link" href="{{ item.href }}">
+                  {{ item.text }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</header>

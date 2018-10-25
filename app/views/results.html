@@ -1,0 +1,70 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Results
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-body-m">
+        <h1>Ref #{{ propertyData.buildingReferenceNumber }}</h1>
+        
+        <dl class="definition-list">
+          <div class="definition-list__item">
+            <dt>Address:</dt>
+            <dd>{{ propertyData.addressLine1 }}, {{ propertyData.postcode }}, {{ propertyData.addressLine2 }} {{ propertyData.addressLine3 }}</dd>
+          </div>
+
+          <div class="definition-list__item">
+            <dt>Local authority:</dt>
+            <dd>{{ propertyData.localAuthorityLabel or 'N/A' }}</dd>
+          </div>
+          
+          <div class="definition-list__item">
+            <dt>Floor area:</dt>
+            <dd><strong>{{ propertyData.floorArea }} &#13217;</strong></dd>
+          </div>
+
+          <div class="definition-list__item">
+            <dt>Floor height:</dt>
+            <dd>{{ propertyData.floorHeight + ' m' if propertyData.floorHeight else 'N/A' }}</dd>
+          </div>
+          
+          <div class="definition-list__item">
+            <dt>Date of inspection:</dt>
+            <dd>{{ propertyData.inspectionDate  or 'N/A'}}</dd>
+          </div>
+          
+          <div class="definition-list__item">
+            <dt>Heated rooms:</dt>
+            <dd>{{ propertyData.numberHeatedRooms or 'N/A' }}</dd>
+          </div>
+
+          <div class="definition-list__item">
+            <dt>Extensions:</dt>
+            <dd>{{ propertyData.extensionCount or 'N/A' }}</dd>
+          </div>
+
+          <div class="definition-list__item">
+            <dt>Energy rating:</dt>
+            <dd>{{ propertyData.currentEnergyRating or 'N/A' }}</dd>
+          </div>
+
+          <div class="definition-list__item">
+            <dt>Heating type:</dt>
+            <dd>{{ propertyData.mainHeatDescription or 'N/A' }}</dd>
+          </div>
+        </dl>
+
+        {{ govukButton({
+          text: "Try another one",
+          href: "/"
+        }) }}
+      </div>
+    </div>
+</div>
+
+{% endblock %}
