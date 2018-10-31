@@ -36,7 +36,7 @@
     @include govuk-clearfix;
     position: relative;
     margin-bottom: -$epc-header-border-width;
-    padding: govuk-spacing(2) 0 0 0;
+    padding: govuk-spacing(4) 0 govuk-spacing(2) 0;
     border-bottom: $epc-header-border-width solid $epc-header-border-color;
   }
 

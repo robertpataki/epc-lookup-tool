@@ -1,0 +1,19 @@
+<form role="search" method="post" action="lookup" class="epc-search-box {{ params.classes if params.classes }}" aria-label="{{ params.ariaLabel or 'Search' }}" id="search" title="Search">
+  <div class="epc-search-box__contents">
+    
+    <div class="epc-search-box__table-cell">
+      <label for="house-number" class="govuk-visually-hidden">{{ params.label or 'House Number' }}</label>
+      <input type="text" name="house-number" id="house-number" class="epc-search-box__input" placeholder="{{ params.placeholder or 'House Number' }}" value="{{ params.value or '' }}" aria-label="{{ params.ariaLabel or 'House Number' }}" autocomplete="off">
+    </div>
+    <div class="epc-search-box__table-cell">
+      <label for="postcode" class="govuk-visually-hidden">{{ params.label or 'Postcode' }}</label>
+      <input type="text" name="postcode" id="postcode" class="epc-search-box__input" placeholder="{{ params.placeholder or 'Postcode' }}" value="{{ params.value or '' }}" aria-label="{{ params.ariaLabel or 'Postcode' }}" autocomplete="off">
+    </div>
+
+    <div class="epc-search-box__table-cell epc-search-box__table-cell--button">
+      <button data-uipath="search.button" class="epc-search-box__button" aria-label="Search">
+        <img src="/public/images/icon-search.png" alt="Magnifying glass" />
+      </button>
+    </div>
+  </div>
+</form>

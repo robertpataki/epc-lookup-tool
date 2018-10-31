@@ -18,6 +18,12 @@ router.get('/lookup', (req, res) => {
   res.redirect('/')
 })
 
+router.get('/', (req, res) => {
+  res.render('index.html', {
+    searchBox: false
+  })
+})
+
 router.post('/lookup', (req, res, next) => {
   const postcode = req.body['postcode']
   const houseNumber = req.body['house-number']

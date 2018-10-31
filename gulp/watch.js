@@ -8,7 +8,7 @@ const gulp = require('gulp')
 const config = require('./config.json')
 
 gulp.task('watch-sass', function () {
-  return gulp.watch(config.paths.assets + 'sass/**', {cwd: './'}, ['sass'])
+  return gulp.watch([config.paths.assets + 'sass/**', config.paths.views + 'components/**'], {cwd: './'}, ['sass'])
 })
 
 gulp.task('watch-assets', function () {
@@ -19,7 +19,7 @@ gulp.task('watch-assets', function () {
 // Backward compatibility with Elements
 
 gulp.task('watch-sass-v6', function () {
-  return gulp.watch(config.paths.v6Assets + 'sass/**', {cwd: './'}, ['sass-v6'])
+  return gulp.watch([config.paths.v6Assets + 'sass/**', config.paths.views + 'components/**'], {cwd: './'}, ['sass-v6'])
 })
 
 gulp.task('watch-assets-v6', function () {

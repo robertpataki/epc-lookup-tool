@@ -1,3 +1,6 @@
+{% from "components/epc-search-box/macro.njk" import  epcSearchBox %}
+
+{% set showSearchBox = true if params.searchBox != false or false %}
 <header class="epc-header {{ params.classes if params.classes }}" role="banner" data-module="epc-header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="epc-header__container {{ params.containerClasses | default('govuk-width-container') }}">
@@ -5,13 +8,18 @@
     <div class="epc-header__contents">
 
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-one-half">
           {% if params.serviceName %}
           <a href="{{ params.serviceUrl }}" class="epc-header__link epc-header__link--service-name">
             {{ params.serviceName }}
           </a>
           {% endif %}
         </div>
+        {% if showSearchBox %}
+        <div class="govuk-grid-column-one-half">
+          {{ epcSearchBox() }}
+        </div>
+        {% endif %}
       </div>
 
       {% if params.navigation %}

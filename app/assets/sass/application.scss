@@ -11,6 +11,7 @@ $govuk-global-styles: true;
 
 // EPC components
 @import 'epc-header/epc-header';
+@import 'epc-search-box/epc-search-box';
 
 // Components that aren't in Frontend
 @import "components/cookie-banner";
